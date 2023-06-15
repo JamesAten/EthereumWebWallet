@@ -21,6 +21,12 @@ const AccountDetail: React.FC<AccountDetailProps> = ({account}) => {
         message: '',
     });
 
+    const fetchData = async () => {
+        const provider = new ethers.providers.JsonRpcProvider(goerli.rpcUrl);
+        let accountBalance = await provider.getBalance(account.address);
+        setBalance((String(toFixed(ethers.utils.formatEther(accountBalance)))));
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const provider = new ethers.providers.JsonRpcProvider(goerli.rpcUrl);
@@ -29,6 +35,7 @@ const AccountDetail: React.FC<AccountDetailProps> = ({account}) => {
         }
         fetchData();
     }, [account.address])
+
 
     function handleDestinationAddressChange(event: React.ChangeEvent<HTMLInputElement>) {
         setToAddress(event.target.value);
@@ -83,6 +90,12 @@ const AccountDetail: React.FC<AccountDetailProps> = ({account}) => {
             </a><br/>
                 Balance: {balance} ETH
             </h4>
+            <button
+                className="btn btn-info rounded-pill px-3"
+                type="button"
+                onClick={fetchData}>
+                Refresh Account Info
+            </button>
             <hr>
             </hr>
             <div className="container sendDiv">

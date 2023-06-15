@@ -128,13 +128,14 @@ const Contract: React.FC<AccountTransactionsProps> = ({ account }) => {
             <h4>Contract Address: <a  href={`${goerli.blockExplorerUrl}/address/${contractAddress}`} target="_blank" rel="noopener noreferrer">
               {contractAddress}
             </a></h4>
-            <h4>Contract Balance: {ethers.utils.formatEther(walletBalance)} ETH</h4>
 
-            <h4>
+            <h5>
                 Owner Address: <a href={`https://goerli.etherscan.io/address/${account.address}`} target="_blank" rel="noreferrer">
                 {account.address}
                 </a>
-            </h4>
+            </h5>
+
+            <h5>Contract Balance: {ethers.utils.formatEther(walletBalance)} ETH</h5>
 
             <div className="checkIsAllowedToSpendDiv container">
                 <div className="form-group">
