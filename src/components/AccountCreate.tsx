@@ -27,7 +27,6 @@ const AccountCreate: React.FC = () => {
     const recoverAccount = useCallback(
         async (recoveryPhrase: string) => {
             const result = await generateAccount(recoveryPhrase);
-            console.log(result)
 
             setAccount(result.account);
 
@@ -40,8 +39,6 @@ const AccountCreate: React.FC = () => {
     async function createAccount() {
         // Call the generateAccount function with no arguments
         const result = await generateAccount();
-
-        console.log(result)
 
         // Update the account state with the newly created account
         setAccount(result.account);
